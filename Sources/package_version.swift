@@ -10,8 +10,14 @@ import ArgumentParser
 
 @main
 struct package_version: ParsableCommand {
+    @Option var repo = "Default"
+    
     mutating func run() throws {
         Figlet.say("Package Versions")
-        showLatestPackageVersions()
+        if repo == "Default" {
+            showLatestPackageVersions()
+        } else {
+            showLatestPackageVersion(repo: repo)
+        }
     }
 }
